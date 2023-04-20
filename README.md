@@ -75,8 +75,7 @@ for group in $(cat group.txt); do
 done \
 | table.mergeLines.pl - 1 0 2 `cat group.txt` \
 | sed 's/^g__//' \
-| bash -c "cat <(table.transpose.pl validation_AUC.txt \
-| sed 's/^/\t/') -" \
+| bash -c "cat <(table.transpose.pl validation_AUC.txt | sed 's/^/\t/') -" \
 | table.transpose.pl - \
 | sed '1 s/^\t\t/sample\tvalidation AUC\t/' > validation_AUC.feature_importance.txt
 
